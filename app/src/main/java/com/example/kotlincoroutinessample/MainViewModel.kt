@@ -3,7 +3,6 @@ package com.example.kotlincoroutinessample
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 
 class MainViewModel: ViewModel() {
@@ -15,8 +14,8 @@ class MainViewModel: ViewModel() {
         get() = _snackBar
 
     fun onMainViewClicked() {
-        viewModelScope.launch {
-            delay(1_000)
+        uiScope.launch {
+            delay(1000)
             _snackBar.postValue("Hello, from threads!")
         }
     }
